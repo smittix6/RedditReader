@@ -76,6 +76,7 @@ namespace RedditReader.Logic
             {
                 foreach (var post in apiResponse.Data)
                 {
+                    post.SyncedAt = apiResponse.Date; // ideally the RedditAPI should have an UpdatedAt attr, but this works too
                     await _postsRepository.CreateOrUpdate(post);
                 }
             }

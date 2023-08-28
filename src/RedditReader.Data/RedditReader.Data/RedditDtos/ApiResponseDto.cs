@@ -20,6 +20,13 @@ namespace RedditReader.Data.RedditDtos
         /// Approximate number of seconds to end of period
         /// </summary>
         public int RateLimitReset { get; set; }
+        /// <summary>
+        /// Timestamp for the response
+        /// </summary>
+        public DateTime Date { get; set; }
+        /// <summary>
+        /// JSON data returned from the request
+        /// </summary>
         public T? Data { get; set; }
     }
 }

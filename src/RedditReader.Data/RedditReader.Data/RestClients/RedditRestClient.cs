@@ -40,6 +40,10 @@ namespace RedditReader.Data.RestClients
             {
                 responseDto.RateLimitReset = int.Parse(response.Headers.GetValues("x-ratelimit-reset").First());
             }
+            if (response.Headers.Contains("Date"))
+            {
+                responseDto.Date = DateTime.Parse(response.Headers.GetValues("Date").First());
+            }
             var data = await response.EnsureSuccessStatusCode().Content.ReadFromJsonAsync<ListingDto>();
             responseDto.Data = data?.Data.Children.Select(x => x.Data).ToList();
             return responseDto;

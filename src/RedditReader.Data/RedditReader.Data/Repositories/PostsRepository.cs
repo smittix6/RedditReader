@@ -36,11 +36,12 @@ namespace RedditReader.Data.Repositories
                     _posts.Add(post);
                     eventArgs.EventType = Enums.RepositoryEventType.Created;
                 }
-                else
+                else if (existingPost.SyncedAt < post.SyncedAt)
                 {
                     existingPost.Author = post.Author;
                     existingPost.Author_Fullname = post.Author_Fullname;
                     existingPost.Ups = post.Ups;
+                    existingPost.SyncedAt = post.SyncedAt;
                     eventArgs.EventType = Enums.RepositoryEventType.Updated;
                 }
 

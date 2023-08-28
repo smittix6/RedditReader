@@ -14,5 +14,6 @@ namespace RedditReader.Data.RedditDtos
         public string? Author { get; set; }
         public string? Author_Fullname { get; set; }
         public string? Title { get; set; }
+        public DateTime SyncedAt { get; set; }
     }
 }
